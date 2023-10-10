@@ -78,9 +78,9 @@
                         <strong style="margin-left: 30px">{{number_format($customer_total->amount)}} VNĐ</strong>
                       </li>
                     </ul>
-                    <form action="/user/thanh-toan" method="post">
+                    <form action="/user/payment" method="post">
                         @csrf
-                        <input type="hidden" name="thanhToan" value="{{$sum_price}}">
+                        <input type="hidden" name="payment" value="{{$sum_price}}">
                         <input type="hidden" name="soDu" value="{{$customer_total->amount}}">
                         {{-- <div class="input-group">
                             <input type="text" name="freeship" class="form-control" placeholder="Promo code">

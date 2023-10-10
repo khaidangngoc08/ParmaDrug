@@ -105,7 +105,7 @@ class CustomerController extends Controller
         $checklogin = Auth::guard('customer')->attempt($data);
         if ($checklogin == true) {
             $user = Auth::guard('customer')->user();
-            if ($user->is_active == 1) {
+            if ($user->is_active == true) {
                 $count = Bill::select(DB::raw('count(id) as total'))
                     ->groupBy('customer_id')->first();
                 if (!empty($count)) {

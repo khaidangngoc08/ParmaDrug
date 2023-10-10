@@ -15,8 +15,9 @@ class CreateUsers extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('password');
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('address');
@@ -25,8 +26,8 @@ class CreateUsers extends Migration
             $table->string('gender');
             $table->boolean('is_admin')->default(false);
             $table->boolean('is_master')->default(false);
-            $table->integer('is_open')->default(false);
-            $table->string('token');
+            $table->integer('is_open');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

@@ -30,7 +30,6 @@ class UserController extends Controller
     {
         $data = $request->all();
         $data["is_master"] = false;
-        $data["token"] = $request->_token;
         User::create($data);
         toastr()->success('Đã thêm mới dữ liệu thành công');
         return redirect('/admin/user/create');

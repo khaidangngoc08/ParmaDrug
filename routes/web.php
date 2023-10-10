@@ -22,7 +22,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'adminLogin'], function () {
     Route::get('/home', [\App\Http\Controllers\AdminUserController::class, 'home']);
 
     Route::get('/product-category/create', [\App\Http\Controllers\ProductCategoryController::class, 'create']);
-    Route::get('/product-category/list', [\App\Http\Controllers\ProductCategoryController::class, 'list_catagory']);
+    Route::get('/product-category/list', [\App\Http\Controllers\ProductCategoryController::class, 'list_category']);
     Route::post('/product-category/create', [\App\Http\Controllers\ProductCategoryController::class, 'store']);
     Route::get('/product-category/edit/{id}', [\App\Http\Controllers\ProductCategoryController::class, 'edit']);
     Route::post('/product-category/update', [\App\Http\Controllers\ProductCategoryController::class, 'update']);
@@ -131,7 +131,7 @@ Route::group(['prefix' => '/user', 'middleware' => 'checkLogin'], function () {
 
     Route::get('/gio-hang/delete/{id}', [\App\Http\Controllers\BillController::class, 'deleteDonHang']);
 
-    Route::post('/thanh-toan', [\App\Http\Controllers\BillController::class, 'thanhToan']);
+    Route::post('/payment', [\App\Http\Controllers\BillController::class, 'payment']);
 
     Route::get('/bank', [\App\Http\Controllers\BankController::class, 'index']);
 

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class AdminSeeder extends Seeder
 {
@@ -19,11 +20,11 @@ class AdminSeeder extends Seeder
         DB::table('users')->truncate();
 
         DB::table('users')->insert([
-            [   'email' => 'admin@master.com',
+            [
+                'email' => 'admin@master.com',
                 'password' => bcrypt('123123123'),
                 'first_name' => 'Admin',
                 'address' => 'Phan Thanh, Da Nang' ,
-                'token' => '$2a$12$tM8NjSrEcRRg7UKZXGrT4uEs/10Xl57ibpjarPQKzbnfU2ikVCPOi' ,
                 'phone' => '0934747602' ,
                 'avatar' => 'Master' ,
                 'last_name' => 'Master' ,
@@ -31,6 +32,19 @@ class AdminSeeder extends Seeder
                 'is_master' => true ,
                 'is_open' => 1 ,
                 'gender' => 1
+            ],
+        ]);
+
+        DB::table('customers')->insert([
+            [
+                'email' => 'dangngockhai@gmail.com',
+                'password' => bcrypt('123123123'),
+                'name' => 'Dang Ngoc Khai',
+                'phone' => '0934747602',
+                'address' => 'Phan Thanh, Da Nang',
+                'description' => Str::random(30),
+                'amount' => 100000000,
+                'is_active' => true,
             ],
         ]);
     }

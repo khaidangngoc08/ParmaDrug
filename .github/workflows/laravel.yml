@@ -1,0 +1,52 @@
+name: Laravel CI/CD
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set Up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+
+      - name: Install Composer Dependencies
+        run: composer install
+
+      - name: Generate Application Key
+        run: php artisan key:generate
+
+      - name: Install Node.js and NPM
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install NPM Dependencies
+        run: npm install
+
+      - name: Build Assets
+        run: npm run production
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: SSH to Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /path_to_your_app
+            git pull origin master
+            composer install --no-dev --optimize-autoloader
+            php artisan migrate --force
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache

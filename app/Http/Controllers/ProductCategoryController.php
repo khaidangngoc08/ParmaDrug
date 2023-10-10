@@ -17,11 +17,11 @@ class ProductCategoryController extends Controller
         return view('pages.productCategory.create', compact('data'));
     }
 
-    public function list_catagory()
+    public function list_category()
     {
         $data = ProductCategory::orderByDesc('id')->get();
         toastr()->info('Đã load data...');
-        return view('pages.productCategory.list_catagory', compact('data'));
+        return view('pages.productCategory.list_category', compact('data'));
     }
 
     public function store(CreateProductCategoryRequest $request)

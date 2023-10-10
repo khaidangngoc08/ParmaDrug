@@ -11,8 +11,8 @@ class BankController extends Controller
     public function index()
     {
         $customerID = Auth::guard('customer')->user()->id;
-        $data = Customer::where('id' , $customerID)->first();
-        return view('Customer.bank' , compact('data'));
+        $data = Customer::where('id', $customerID)->first();
+        return view('Customer.bank', compact('data'));
     }
 
     public function bank(Request $request)

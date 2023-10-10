@@ -104,10 +104,10 @@ class BillController extends Controller
         }
     }
 
-    public function thanhToan(Request $request)
+    public function payment(Request $request)
     {
         $SoDu       = $request->soDu;
-        $TongTien   = $request->thanhToan;
+        $TongTien   = $request->payment;
         if ($SoDu < $TongTien) {
             toastr()->warning("Số Tiền Trong Tài Khoản Của Bạn Không Đủ");
             return redirect('/user/gio-hang');

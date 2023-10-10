@@ -21,9 +21,9 @@ class CreateCustomers extends Migration
             $table->string('phone')->nullable();;
             $table->string('address')->nullable();
             $table->string('description')->nullable();
-            $table->string('token')->nullable();
-            $table->integer('is_active')->default(1);
+            $table->boolean('is_active')->default(false);
             $table->integer('amount')->default(0);
+            $table->rememberToken();
             $table->timestamps();
         });
     }

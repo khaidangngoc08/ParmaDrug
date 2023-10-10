@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Client\NewsCategory\CreateNewsCategoryRequest;
 use App\Http\Requests\Client\NewsCategory\UpdateNewsCategoryRequest;
 use App\Models\NewsCategory;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
